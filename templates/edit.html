@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1>Edit {{ user.get_full_name() }}</h1>
+<form method="POST">
+<p>First name:<br> 
+    <input name="first_name" placeholder="Enter first name" style="width: 300px;" required>
+</p>
+<p>Last name:<br>
+    <input name="last_name" placeholder="Enter last name" style="width: 300px;">
+</p>
+<p>Image URL:<br>
+    <input name="image_url" placeholder="Provide image of this user" style="width: 300px;">
+</p>
+  <button type="Submit">Save</button>
+  <button type="Reset" value="Cancel">Reset</button>
+</form>
+<br>
+<a href="/{{ user.id }}">Go back</a>
+
+{% endblock %}

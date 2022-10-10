@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1>Users</h1>
+<ul>
+    {% for user in users %}
+    <li><a href="/{{ user.id }}">{{ user.get_full_name() }}</a></li>
+    {% endfor %}
+</ul>
+<h2>Add User</h2>
+<form method="POST">
+<p>First name:<br> 
+    <input name="first_name" placeholder="Enter first name" style="width: 300px;" required>
+</p>
+<p>Last name:<br>
+    <input name="last_name" placeholder="Enter last name" style="width: 300px;">
+</p>
+<p>Image URL:<br>
+    <input name="image_url" placeholder="Provide image of this user" style="width: 300px;">
+</p>
+  <button>Add</button>
+</form>
+
+{% endblock %}

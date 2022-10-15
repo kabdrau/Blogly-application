@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+DEFAULT_IMAGE_URL = "https://cdn2.iconfinder.com/data/icons/avatars-99/62/avatar-370-456322-512.png"
+
 def connect_db(app):
     """Connect to database."""
 
@@ -22,7 +24,7 @@ class User(db.Model):
     last_name = db.Column(db.String(50),
                     nullable = True)
     image_url = db.Column(db.String, 
-                    default = "https://cdn2.iconfinder.com/data/icons/avatars-99/62/avatar-370-456322-512.png")
+                    default = DEFAULT_IMAGE_URL)
 
     def get_full_name(self):
         """Get users full name."""

@@ -16,15 +16,28 @@ app.config['SECRET_KEY'] = "SECRET!"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
 
-# List all users and add new user
+#List all users
 @app.route("/")
+def root():
+    """Redirect to list of users."""
+    
+    return redirect("/users")
+
+@app.route("/users")
 def list_users():
-    """List users and show add form."""
+    """List users."""
     
     users = User.query.all()
-    return render_template("list.html", users=users)
+    return render_template("users.html", users=users)
 
-@app.route("/", methods=["POST"])
+# Add new user
+@app.route("/users/new")
+def add_user_form():
+    """Show add form"""
+    
+    return render_template("new.html")
+
+@app.route("/users/new", methods=["POST"])
 def add_user():
     """Add user and redirect to user details."""
 
@@ -37,10 +50,10 @@ def add_user():
     db.session.add(user)
     db.session.commit()
 
-    return redirect(f"/{user.id}")
+    return redirect(f"/users/{user.id}")
 
 # Show single user
-@app.route("/<int:user_id>")
+@app.route("/users/<int:user_id>")
 def show_user(user_id):
     """Show info on a single user."""
 
@@ -48,14 +61,14 @@ def show_user(user_id):
     return render_template("detail.html", user=user)
 
 # Edit user
-@app.route("/<int:user_id>/edit")
+@app.route("/users/<int:user_id>/edit")
 def edit_user_form(user_id):
     """Edit user form."""
 
     user = User.query.get_or_404(user_id)
     return render_template("edit.html", user=user)
 
-@app.route("/<int:user_id>/edit", methods=["POST"])
+@app.route("/users/<int:user_id>/edit", methods=["POST"])
 def edit_user(user_id):
     """Edit user and redirect to user details."""
 
@@ -68,10 +81,10 @@ def edit_user(user_id):
     db.session.add(user)
     db.session.commit()
 
-    return redirect(f"/{user.id}")
+    return redirect(f"/users/{user.id}")
 
 # Delete user
-@app.route("/<int:user_id>/delete", methods=["GET","POST"])
+@app.route("/users/<int:user_id>/delete", methods=["GET","POST"])
 def delete_user(user_id):
     """Delete user and redirect to list all users."""
 

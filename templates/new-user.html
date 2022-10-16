@@ -2,7 +2,7 @@
 
 {% block main %}
 
-<h1>Edit {{ user.get_full_name() }}</h1>
+<h1>Add User</h1>
 <form method="POST">
 <p>First name:<br> 
     <input name="first_name" placeholder="Enter first name" style="width: 300px;" required>
@@ -13,10 +13,9 @@
 <p>Image URL:<br>
     <input name="image_url" placeholder="Provide image of this user" style="width: 300px;">
 </p>
-  <button type="Submit">Save</button>
-  <button type="Reset" value="Cancel">Reset</button>
+<button>Add</button>
 </form>
-<br>
-<a href="/users/{{ user.id }}">Go back</a>
+
+<p><a href="/users">Go back</a></p>
 
 {% endblock %}

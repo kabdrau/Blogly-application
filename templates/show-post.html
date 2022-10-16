@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<p><i>posted by {{ post.users.get_full_name() }} on {{ post.friendly_date() }}</i></p>
+
+<a href="/posts/{{ post.id }}/edit"><button>Edit</button></a>
+<a href="/posts/{{ post.id }}/delete"><button>Delete</button></a>
+
+<p><a href="/users/{{ post.user_id }}">Go back</a></p>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1>Add Post for {{ user.get_full_name() }}</h1>
+<form method="POST">
+<p>Title:<br> 
+    <input name="title" placeholder="Enter title" style="width: 300px;" required>
+</p>
+<p>Content:<br>
+    <textarea name="content" placeholder="Enter content" style="width: 303px;" rows="4"></textarea>
+</p>
+<button type="Submit">Add</button>
+<button type="Reset">Reset</button>
+</form>
+
+<p><a href="/users/{{ user.id }}">Go back</a></p>
+
+{% endblock %}

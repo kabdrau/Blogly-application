@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1>{{ user.get_full_name() }}</h1>
+<a href="/users/{{ user.id }}/edit"><button>Edit</button></a>
+<a href="/users/{{ user.id }}/delete"><button>Delete</button></a>
+<p>
+  <img src="{{ user.image_url }}" style="width:200px">
+</p>
+
+<h2>Posts</h2>
+<p><button type="button" onclick="window.location.href='/users/{{ user.id }}/posts/new'">Add post</button></p>
+<ul>
+    {% for post in posts %}
+    <li><a href="/posts/{{ post.id }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+
+<p><a href="/">Go back</a></p>
+
+{% endblock %}

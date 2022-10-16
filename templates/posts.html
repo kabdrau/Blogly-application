@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1>{{ msg }} Posts</h1>
+<ul>
+    {% for post in posts %}
+    <li>
+        <h3><a href="/posts/{{ post.id }}">{{ post.title }}</a></h3>
+        <i> posted by {{ post.users.get_full_name() }} on {{ post.friendly_date() }}</i>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

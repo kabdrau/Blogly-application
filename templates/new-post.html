@@ -10,6 +10,14 @@
 <p>Content:<br>
     <textarea name="content" placeholder="Enter content" style="width: 303px;" rows="4"></textarea>
 </p>
+<p>
+    {% for tag in tags %}
+    <input type="checkbox"
+    name="tags"
+    value="{{ tag.id }}">
+    <label>{{ tag.name }}</label><br>
+    {% endfor %}
+</p>
 <button type="Submit">Add</button>
 <button type="Reset">Reset</button>
 </form>
